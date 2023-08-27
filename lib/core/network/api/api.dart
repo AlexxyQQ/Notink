@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:template/config/constants/api_endpoints.dart';
+import 'package:notink/config/constants/api_endpoints.dart';
 
 import 'dio_error_interceptor.dart';
 // import 'package:socket_io_client/socket_io_client.dart' as io;
@@ -57,11 +57,11 @@ class ApiResponse {
   /// The function `ApiResponse.fromResponse` is a factory constructor in Dart that takes a `Response`
   /// object and returns an `ApiResponse` object with the success status, data, and message extracted
   /// from the response data.
-  /// 
+  ///
   /// Args:
   ///   response (Response): The parameter "response" is of type "Response", which is likely an HTTP
   /// response object.
-  /// 
+  ///
   /// Returns:
   ///   The method is returning an instance of the ApiResponse class.
   factory ApiResponse.fromResponse(Response response) {

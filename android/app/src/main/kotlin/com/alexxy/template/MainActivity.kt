@@ -1,4 +1,4 @@
-package com.alexxy.template
+package com.alexxy.notink
 
 import io.flutter.embedding.android.FlutterActivity
 

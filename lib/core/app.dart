@@ -14,7 +14,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Template", // App name
+      title: "notink", // App name
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appLightTheme(),
       darkTheme: AppTheme.appDarkTheme(),

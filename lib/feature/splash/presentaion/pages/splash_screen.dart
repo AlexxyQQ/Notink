@@ -3,7 +3,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:template/core/common/loading_screen.dart';
+import 'package:notink/core/common/loading_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

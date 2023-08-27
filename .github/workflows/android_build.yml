@@ -55,9 +55,9 @@ jobs:
       # Rename the APK files for better readability
       - name: Rename APK files
         run: |
-          mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/Template-v1.${{ github.run_number }}-arm64-v8a.apk
-          mv build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk build/app/outputs/flutter-apk/Template-v1.${{ github.run_number }}-armeabi-v7a.apk
-          mv build/app/outputs/flutter-apk/app-x86_64-release.apk build/app/outputs/flutter-apk/Template-1.${{ github.run_number }}-x86_64.apk
+          mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/notink-v1.${{ github.run_number }}-arm64-v8a.apk
+          mv build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk build/app/outputs/flutter-apk/notink-v1.${{ github.run_number }}-armeabi-v7a.apk
+          mv build/app/outputs/flutter-apk/app-x86_64-release.apk build/app/outputs/flutter-apk/notink-1.${{ github.run_number }}-x86_64.apk
 
       # Create a Github release
       - name: Get Branch Name
@@ -69,7 +69,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "v1.${{ github.run_number }}" # Tag name for the release
-          name: "Template-v1.${{ github.run_number }}" # Name of the release
+          name: "notink-v1.${{ github.run_number }}" # Name of the release
           body_path: CHANGELOGS.md # Contents of the changelog file
           files: |
             build/app/outputs/flutter-apk/*.apk
@@ -125,7 +125,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: "zip"
-          filename: Template-v1.${{ github.run_number }}-windows.zip
+          filename: notink-v1.${{ github.run_number }}-windows.zip
           directory: build/windows/runner/Release
 
       # Create a Github release
@@ -139,9 +139,9 @@ jobs:
 
         with:
           tag_name: "v1.${{ github.run_number }}" # Tag name for the release
-          name: "Template-v1.${{ github.run_number }}" # Name of the release
+          name: "notink-v1.${{ github.run_number }}" # Name of the release
           body_path: CHANGELOGS.md # Contents of the changelog file
-          files: build/windows/runner/Release/Template-v1.${{ github.run_number }}-windows.zip
+          files: build/windows/runner/Release/notink-v1.${{ github.run_number }}-windows.zip
           draft: false
           prerelease: false
         env:
@@ -182,7 +182,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: "zip"
-          filename: Template-v1.${{ github.run_number }}-linux.zip
+          filename: notink-v1.${{ github.run_number }}-linux.zip
           directory: build/linux/x64/release/bundle
 
       # Create a Github release
@@ -197,9 +197,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           tag_name: "v1.${{ github.run_number }}" # Tag name for the release
-          name: "Template-v1.${{ github.run_number }}" # Name of the release
+          name: "notink-v1.${{ github.run_number }}" # Name of the release
           body_path: CHANGELOGS.md # Contents of the changelog file
-          files: build/linux/x64/release/bundle/Template-v1.${{ github.run_number }}-linux.zip
+          files: build/linux/x64/release/bundle/notink-v1.${{ github.run_number }}-linux.zip
           draft: false
           prerelease: false
 
@@ -230,7 +230,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: "zip"
-          filename: Template-v1.${{ github.run_number }}-macos.zip
+          filename: notink-v1.${{ github.run_number }}-macos.zip
           directory: build/macos/Build/Products/Release
 
       # Create a Github release
@@ -243,9 +243,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "v1.${{ github.run_number }}" # Tag name for the release
-          name: "Template-v1.${{ github.run_number }}" # Name of the release
+          name: "notink-v1.${{ github.run_number }}" # Name of the release
           body_path: CHANGELOGS.md # Contents of the changelog file
-          files: build/macos/Build/Products/Release/Template-v1.${{ github.run_number }}-macos.zip
+          files: build/macos/Build/Products/Release/notink-v1.${{ github.run_number }}-macos.zip
           draft: false
           prerelease: false
         env:
@@ -287,7 +287,7 @@ jobs:
 #       uses: softprops/action-gh-release@v1
 #       with:
 #         tag_name: "v1.${{ github.run_number }}" # Tag name for the release
-#         name: "Template-v1.${{ github.run_number }}" # Name of the release
+#         name: "notink-v1.${{ github.run_number }}" # Name of the release
 #         body_path: CHANGELOGS.md # Contents of the changelog file
 #         files: build/ios/ipa/*.ipa
 #         draft: false
