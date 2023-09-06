@@ -7,7 +7,7 @@ import 'package:notink/feature/auth/domain/entities/user_entity.dart';
 class NoteEntity {
   final String id;
   final String title;
-  final String description;
+  final Map<String, dynamic> document;
   final DateTime createdTime;
   final DateTime updatedTime;
   final Map<String, dynamic> properties;
@@ -15,7 +15,7 @@ class NoteEntity {
   NoteEntity({
     required this.id,
     required this.title,
-    required this.description,
+    required this.document,
     required this.createdTime,
     required this.updatedTime,
     required this.properties,
@@ -25,7 +25,7 @@ class NoteEntity {
   NoteEntity.empty()
       : id = '',
         title = '',
-        description = '',
+        document = {},
         createdTime = DateTime.now(),
         updatedTime = DateTime.now(),
         user = UserEntity.empty(),
@@ -34,7 +34,7 @@ class NoteEntity {
   NoteEntity copyWith({
     String? id,
     String? title,
-    String? description,
+    Map<String, dynamic>? document,
     DateTime? createdTime,
     DateTime? updatedTime,
     Map<String, dynamic>? properties,
@@ -43,7 +43,7 @@ class NoteEntity {
     return NoteEntity(
       id: id ?? this.id,
       title: title ?? this.title,
-      description: description ?? this.description,
+      document: document ?? this.document,
       createdTime: createdTime ?? this.createdTime,
       updatedTime: updatedTime ?? this.updatedTime,
       properties: properties ?? this.properties,
@@ -55,7 +55,7 @@ class NoteEntity {
     return <String, dynamic>{
       'id': id,
       'title': title,
-      'description': description,
+      'document': document,
       'createdTime': createdTime.millisecondsSinceEpoch,
       'updatedTime': updatedTime.millisecondsSinceEpoch,
       'properties': properties,
@@ -67,7 +67,9 @@ class NoteEntity {
     return NoteEntity(
       id: map['id'] as String,
       title: map['title'] as String,
-      description: map['description'] as String,
+      document: Map<String, dynamic>.from(
+        (map['document'] as Map<String, dynamic>),
+      ),
       createdTime:
           DateTime.fromMillisecondsSinceEpoch(map['createdTime'] as int),
       updatedTime:
@@ -88,7 +90,7 @@ class NoteEntity {
 
   @override
   String toString() {
-    return 'NoteEntity(id: $id, title: $title, description: $description, createdTime: $createdTime, updatedTime: $updatedTime, properties: $properties)';
+    return 'NoteEntity(id: $id, title: $title, document: $document, createdTime: $createdTime, updatedTime: $updatedTime, properties: $properties)';
   }
 
   @override
@@ -97,7 +99,7 @@ class NoteEntity {
 
     return other.id == id &&
         other.title == title &&
-        other.description == description &&
+        other.document == document &&
         other.createdTime == createdTime &&
         other.updatedTime == updatedTime &&
         mapEquals(other.properties, properties);
@@ -107,7 +109,7 @@ class NoteEntity {
   int get hashCode {
     return id.hashCode ^
         title.hashCode ^
-        description.hashCode ^
+        document.hashCode ^
         createdTime.hashCode ^
         updatedTime.hashCode ^
         properties.hashCode;

@@ -12,7 +12,7 @@ class NoteHiveModel extends HiveObject {
   NoteHiveModel(
       {required this.id,
       required this.title,
-      required this.description,
+      required this.document,
       required this.createdTime,
       required this.updatedTime,
       required this.properties,
@@ -25,7 +25,7 @@ class NoteHiveModel extends HiveObject {
   String title;
 
   @HiveField(2)
-  String description;
+  Map<String, dynamic> document;
 
   @HiveField(3)
   DateTime createdTime;
@@ -41,7 +41,7 @@ class NoteHiveModel extends HiveObject {
 
   factory NoteHiveModel.create({
     required String? title,
-    required String? subtitle,
+    required Map<String, dynamic>? document,
     DateTime? createdAtTime,
     DateTime? createdAtDate,
     Map<String, dynamic>? properties,
@@ -49,7 +49,7 @@ class NoteHiveModel extends HiveObject {
       NoteHiveModel(
         id: const Uuid().v1(),
         title: title ?? "",
-        description: subtitle ?? "",
+        document: document ?? {},
         createdTime: createdAtTime ?? DateTime.now(),
         updatedTime: createdAtDate ?? DateTime.now(),
         properties: properties ?? {},
@@ -60,7 +60,9 @@ class NoteHiveModel extends HiveObject {
     return NoteHiveModel(
       id: map['id'] as String,
       title: map['title'] as String,
-      description: map['description'] as String,
+      document: Map<String, dynamic>.from(
+        (map['document'] as Map<String, dynamic>),
+      ),
       createdTime: DateTime.fromMillisecondsSinceEpoch(
         map['createdAtTime'] as int,
       ),
@@ -80,7 +82,7 @@ class NoteHiveModel extends HiveObject {
     return NoteEntity(
       id: model.id,
       title: model.title,
-      description: model.description,
+      document: model.document,
       createdTime: model.createdTime,
       updatedTime: model.updatedTime,
       properties: model.properties,
@@ -92,7 +94,7 @@ class NoteHiveModel extends HiveObject {
     return NoteHiveModel(
       id: entity.id,
       title: entity.title,
-      description: entity.description,
+      document: entity.document,
       createdTime: entity.createdTime,
       updatedTime: entity.updatedTime,
       properties: entity.properties,
@@ -104,7 +106,7 @@ class NoteHiveModel extends HiveObject {
     return NoteModel(
       id: model.id,
       title: model.title,
-      description: model.description,
+      document: model.document,
       createdTime: model.createdTime,
       updatedTime: model.updatedTime,
       properties: model.properties,
@@ -116,7 +118,7 @@ class NoteHiveModel extends HiveObject {
     return NoteHiveModel(
       id: model.id,
       title: model.title,
-      description: model.description,
+      document: model.document,
       createdTime: model.createdTime,
       updatedTime: model.updatedTime,
       properties: model.properties,
@@ -128,7 +130,7 @@ class NoteHiveModel extends HiveObject {
     return <String, dynamic>{
       'id': id,
       'title': title,
-      'description': description,
+      'document': document,
       'createdAtTime': createdTime.millisecondsSinceEpoch,
       'createdAtDate': updatedTime.millisecondsSinceEpoch,
       'properties': properties,
@@ -138,7 +140,7 @@ class NoteHiveModel extends HiveObject {
   NoteHiveModel copyWith({
     String? id,
     String? title,
-    String? description,
+    Map<String, dynamic>? document,
     DateTime? createdTime,
     DateTime? updatedTime,
     Map<String, dynamic>? properties,
@@ -147,7 +149,7 @@ class NoteHiveModel extends HiveObject {
     return NoteHiveModel(
       id: id ?? this.id,
       title: title ?? this.title,
-      description: description ?? this.description,
+      document: document ?? this.document,
       createdTime: createdTime ?? this.createdTime,
       updatedTime: updatedTime ?? this.updatedTime,
       properties: properties ?? this.properties,
@@ -157,6 +159,6 @@ class NoteHiveModel extends HiveObject {
 
   @override
   String toString() {
-    return 'NoteHiveModel(id: $id, title: $title, description: $description, createdTime: $createdTime, updatedTime: $updatedTime, properties: $properties, user: $user)';
+    return 'NoteHiveModel(id: $id, title: $title, document: $document, createdTime: $createdTime, updatedTime: $updatedTime, properties: $properties, user: $user)';
   }
 }

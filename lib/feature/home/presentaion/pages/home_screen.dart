@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _jsonString = Future.value(
               jsonEncode(_editorState.document.toJson()),
             );
-            log("String: ${_editorState.document.toJson()}");
+            log("String: ${_editorState.document.toJson().runtimeType}");
           },
         );
   }

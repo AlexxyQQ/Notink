@@ -19,7 +19,7 @@ class NoteHiveModelAdapter extends TypeAdapter<NoteHiveModel> {
     return NoteHiveModel(
       id: fields[0] as String,
       title: fields[1] as String,
-      description: fields[2] as String,
+      document: fields[2] as Map<String, dynamic>,
       createdTime: fields[3] as DateTime,
       updatedTime: fields[4] as DateTime,
       properties: (fields[5] as Map).cast<String, dynamic>(),
@@ -36,7 +36,7 @@ class NoteHiveModelAdapter extends TypeAdapter<NoteHiveModel> {
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.description)
+      ..write(obj.document)
       ..writeByte(3)
       ..write(obj.createdTime)
       ..writeByte(4)

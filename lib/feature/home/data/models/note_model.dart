@@ -6,7 +6,7 @@ class NoteModel extends NoteEntity {
   NoteModel({
     required String id,
     required String title,
-    required String description,
+    required Map<String, dynamic> document,
     required DateTime createdTime,
     required DateTime updatedTime,
     required Map<String, dynamic> properties,
@@ -14,7 +14,7 @@ class NoteModel extends NoteEntity {
   }) : super(
           id: id,
           title: title,
-          description: description,
+          document: document,
           createdTime: createdTime,
           updatedTime: updatedTime,
           properties: properties,
@@ -25,7 +25,9 @@ class NoteModel extends NoteEntity {
     return NoteModel(
       id: map['id'] as String,
       title: map['title'] as String,
-      description: map['description'] as String,
+      document: Map<String, dynamic>.from(
+        (map['document'] as Map<String, dynamic>),
+      ),
       createdTime: DateTime.fromMillisecondsSinceEpoch(
         map['createdTime'] as int,
       ),
@@ -45,7 +47,7 @@ class NoteModel extends NoteEntity {
     return <String, dynamic>{
       'id': id,
       'title': title,
-      'description': description,
+      'document': document,
       'createdTime': createdTime.millisecondsSinceEpoch,
       'updatedTime': updatedTime.millisecondsSinceEpoch,
       'properties': properties,
@@ -57,7 +59,7 @@ class NoteModel extends NoteEntity {
     return NoteEntity(
       id: model.id,
       title: model.title,
-      description: model.description,
+      document: model.document,
       createdTime: model.createdTime,
       updatedTime: model.updatedTime,
       properties: model.properties,
@@ -69,7 +71,7 @@ class NoteModel extends NoteEntity {
     return NoteHiveModel(
       id: id,
       title: title,
-      description: description,
+      document: document,
       createdTime: createdTime,
       updatedTime: updatedTime,
       properties: properties,
@@ -81,7 +83,7 @@ class NoteModel extends NoteEntity {
     return NoteModel(
       id: entity.id,
       title: entity.title,
-      description: entity.description,
+      document: entity.document,
       createdTime: entity.createdTime,
       updatedTime: entity.updatedTime,
       properties: entity.properties,
