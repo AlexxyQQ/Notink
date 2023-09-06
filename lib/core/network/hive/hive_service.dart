@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:notink/feature/home/data/data_sources/local_data_sources/hive/note_hive_data_source.dart';
 
 class HiveService {
   Future<void> init() async {
@@ -11,6 +12,7 @@ class HiveService {
     await hiveOpen('settings');
     await hiveOpen('users');
     log('Boxes opened');
+    // await NoteHiveDataSource().init();
     //? await SomeHiveDataSource().init();
   }
 

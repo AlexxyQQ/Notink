@@ -1,9 +1,7 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:notink/config/router/routers.dart';
 import 'package:notink/core/common/loading_screen.dart';
+import 'package:notink/feature/auth/presentaion/widgets/main_auth_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,9 +19,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   /// Perform some data fetcing and validation here
   Future<void> initialDataFetch() async {
+    final nav = Navigator.of(context);
     // Wait for 2 seconds
     await Future.delayed(const Duration(seconds: 2));
-    log("SplashScreen: initialDataFetch");
+    nav.popAndPushNamed(AppRoutes.homeRoute);
   }
 
   @override

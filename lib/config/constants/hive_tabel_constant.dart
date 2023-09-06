@@ -2,6 +2,6 @@
 class HiveTableConstant {
   HiveTableConstant._();
 
-  static const int someTableID = 0;
-  static const String someBox = "someBox";
+  static const int noteTableID = 0;
+  static const String noteBox = "noteBox";
 }

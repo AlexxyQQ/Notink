@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notink/feature/auth/presentaion/pages/phone/login_page.dart';
+// import 'package:notink/feature/home/presentaion/pages/home_screen.dart';
 
 import '../../feature/splash/presentaion/pages/splash_screen.dart';
 
@@ -13,5 +15,7 @@ class AppRoutes {
   /// with a `SplashScreen` widget builder function.
   static final Map<String, Widget Function(BuildContext)> routes = {
     initialRoute: (context) => const SplashScreen(),
+    loginRoute: (context) => const LoginPagePhoneLayout(),
+    // homeRoute: (context) => const HomeScreen(),
   };
 }
